@@ -274,8 +274,7 @@ All of the three jQuery methods above: text(), html(), and val(), also come with
 
 ~~~js
 $("#test1").text(function(i, origText){
-  return "Old text: " + origText + " New text: Hello world!
-  (index: " + i + ")"; 
+  return "Old text: " + origText + " New text: Hello world! (index: " + i + ")";
 });
 ~~~
 
