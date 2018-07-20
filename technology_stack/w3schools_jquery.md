@@ -568,7 +568,165 @@ The following example returns all `<p>` elements that do not have class name "in
 $("p").not(".intro").css("background-color", "yellow");
 ~~~
 
+# 63 - jQuery - AJAX load() Method
+The jQuery load() method is a simple, but powerful AJAX method.
+~~~js
+$(selector).load(URL,data,callback);
+~~~
+It is also possible to add a jQuery selector to the URL parameter.        
+The following example loads the content of the element with `id="p1"`, inside the file "demo_test.txt", into a specific `<div>` element
+~~~js
+$("#div1").load("demo_test.txt #p1");
+~~~
+The optional callback parameter specifies a callback function to run when the load() method is completed. The callback function can have different parameters:             
+* responseTxt - contains the resulting content if the call succeeds
+* statusTxt - contains the status of the call
+* xhr - contains the XMLHttpRequest object
+~~~js
+$("button").click(function(){
+  $("#div1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
+    if(statusTxt == "success") {
+      alert("External content loaded successfully!");
+    }
+    if(statusTxt == "error") {
+      alert("Error: " + xhr.status + ": " + xhr.statusText);
+    }
+  });
+});
+~~~
 
+# 64 - jQuery $.get() Method
+The $.get() method requests data from the server with an HTTP GET request.     
+~~~js
+$.get(URL,callback);
+$.get("demo_test.asp", function(data, status){
+  alert("Data: " + data + "\nStatus: " + status);
+});
+~~~
+
+# 65 - jQuery $.post() Method
+The $.post() method requests data from the server using an HTTP POST request.
+~~~js
+$.post(URL,data,callback);
+$("button").click(function(){
+  $.post("demo_test_post.asp",
+  {
+    name: "Donald Duck",
+    city: "Duckburg"
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+});
+~~~
+
+# 66 -  jQuery noConflict() Method
+The noConflict() method releases the hold on the $ shortcut identifier, so that other scripts can use it.    
+
+You can of course still use jQuery, simply by writing the full name instead of the shortcut:      
+
+~~~js
+$.noConflict();
+jQuery(document).ready(function(){
+  jQuery("button").click(function(){
+    jQuery("p").text("jQuery is still working!");
+  });
+});
+~~~
+The noConflict() method returns a reference to jQuery, that you can save in a variable, for later use.     
+~~~js
+var jq = $.noConflict();
+jq(document).ready(function(){
+  jq("button").click(function(){
+    jq("p").text("jQuery is still working!");
+  });
+});
+~~~
+If you have a block of jQuery code which uses the $ shortcut and you do not want to change it all, you can pass the $ sign in as a parameter to the ready method   
+~~~js
+$.noConflict();
+jQuery(document).ready(function($){
+    $("button").click(function(){
+        $("p").text("jQuery is still working!");
+    });
+});
+~~~
+
+# 67 - a list filter 
+~~~html
+<input id="myInput" type="text" placeholder="Search..">
+<br>
+
+<ul id="myList">
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
+  <li>Fourth</li>
+</ul>
+~~~
+~~~js
+$("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myList li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+~~~
+
+# 68 - a table filter
+~~~html
+<input id="myInput" type="text" placeholder="Search..">
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody id="myTable">
+    <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>john@example.com</td>
+    </tr>
+    <tr>
+      <td>Anja</td>
+      <td>Ravendale</td>
+      <td>a_r@test.com</td>
+    </tr>
+  </tbody>
+</table>
+~~~
+~~~js
+$("#myInput").on("keyup", function() {
+  var value = $(this).val().toLowerCase();
+  $("#myTable tr").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  });
+});
+~~~
+
+# 69 - filter anything inside a div
+~~~html
+<input id="myInput" type="text" placeholder="Search..">
+<div id="myDIV">
+  <p>I am a paragraph.</p>
+  <div>I am a div element inside div.</div>
+  <button>I am a button</button>
+  <button>Another button</button>
+  <p>Another paragraph.</p>
+</div>
+~~~
+~~~js
+$("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myDIV *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+~~~
 
 
 
