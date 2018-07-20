@@ -5,5 +5,7 @@
  *  the active animation will be stopped,
  *  allowing any queued animations to be
  *  performed afterwards.
+ *
+ * 
  */
 $(selector).stop(stopAll,goToEnd);

@@ -370,11 +370,215 @@ $("p").css({"background-color": "yellow", "font-size": "200%"});
 * The height() method sets or returns the height of an element (excludes padding, border and margin).
 ~~~js
 $("button").click(function(){
-    var txt = "";
-    txt += "Width: " + $("#div1").width() + "</br>";
-    txt += "Height: " + $("#div1").height();
-    $("#div1").html(txt);
+  var txt = "";
+  txt += "Width: " + $("#div1").width() + "</br>";
+  txt += "Height: " + $("#div1").height();
+  $("#div1").html(txt);
 });
 ~~~
+
+# 39 - jQuery innerWidth() and innerHeight() Methods
+* The innerWidth()  return (elementWidth + padding)
+* The innerHeight() return (elementHeight + padding)
+~~~js
+$("button").click(function(){
+  var txt = "";
+  txt += "Inner width: " + $("#div1").innerWidth() + "</br>";
+  txt += "Inner height: " + $("#div1").innerHeight();
+  $("#div1").html(txt);
+});
+~~~
+
+# 40 - jQuery outerWidth() and outerHeight() Methods
+* The outerWidth() return (elementWidth + padding + border) 
+* The outerHeight()return (elementHeight + padding + border) 
+* The outerWidth(true) return (elementWidth + padding + border + margin) 
+* The outerHeight(true)return (elementHeight + padding + border + margin) 
+~~~js
+var txt = "Outer height: " + $("#div1").outerHeight();
+var txt = "Outer height: " + $("#div1").outerHeight(true);
+~~~
+
+# 41 - document and window width 
+~~~js
+$(document).width()
+$(document).height()
+$(window).width()
+$(window).height()
+~~~
+
+# 42 - sets the width and height of a specified `<div>` element:
+~~~js
+$("button").click(function(){
+  $("#div1").width(500).height(500);
+});
+~~~
+
+# 43 - What is Traversing?
+
+jQuery traversing, which means "move through", are used to "find" (or select) HTML elements based on their relation to other elements. Start with one selection and move through that selection until you reach the elements you desire.
+
+# 44 - jQuery Traversing - Ancestors
+An ancestor is a parent, grandparent, great-grandparent, and so on.   
+* parent()
+* parents()
+* parentsUntil()
+
+# 45 - jQuery parent() 
+The parent() method returns the direct parent element of the selected element.        
+This method only traverse a single level up the DOM tree.
+
+~~~js
+$("span").parent();
+~~~
+
+# 46 - jQuery parents() Method
+The parents() method returns all ancestor elements of the selected element, all the way up to the document's root element `(<html>)`.
+~~~js
+$("span").parents();
+$("span").parents("ul");
+~~~
+
+# 47 - jQuery parentsUntil() Method
+The parentsUntil() method returns all ancestor elements between two given arguments.       
+The following example returns all ancestor elements between a `<span>` and a `<div>` element
+~~~js
+$("span").parentsUntil("div");
+~~~
+
+# 48 - jQuery Traversing - Descendants
+A descendant is a child, grandchild, great-grandchild, and so on.
+* children()
+* find()
+
+# 49 - jQuery children() Method
+The children() method returns all direct children of the selected element.     
+This method only traverse a single level down the DOM tree.
+~~~js
+$("div").children();
+~~~
+You can also use an optional parameter to filter the search for children.      
+The following example returns all `<p>` elements with the class name "first", that are direct children of `<div>`:
+
+~~~js
+$("div").children("p.first");
+~~~
+
+# 50 - Query find() Method
+The find() method returns descendant elements of the selected element, all the way down to the last descendant.       
+The following example returns all `<span>` elements that are descendants of `<div>`      
+~~~js
+$("div").find("span");
+~~~
+The following example returns all descendants of `<div>`
+~~~js
+$("div").find("*");
+~~~
+
+# 51 - Traversing Sideways in The DOM Tree
+* siblings()
+* next()
+* nextAll()
+* nextUntil()
+* prev()
+* prevAll()
+* prevUntil()
+(next, nextAll, nextAll) sounds like (parent, parents, parentsUntil)     
+
+# 52 - jQuery siblings() Method
+The siblings() method returns all sibling elements of the selected element.
+The following example returns all sibling elements of `<h2>`
+~~~js
+$("h2").siblings();
+~~~
+You can also use an optional parameter to filter the search for siblings.
+The following example returns all sibling elements of `<h2>` that are `<p>` elements
+~~~js
+$("h2").siblings("p");
+~~~
+
+# 53 - jQuery next() Method
+The next() method returns the next sibling element of the selected element.    
+The following example returns the next sibling of `<h2>`
+~~~js
+$("h2").next();
+~~~
+
+
+# 54 - jQuery nextAll() Method
+The nextAll() method returns all next sibling elements of the selected element.     
+The following example returns all next sibling elements of `<h2>`
+~~~js
+$("h2").nextAll();
+~~~
+
+# 55 - jQuery nextUntil() Method
+The nextUntil() method returns all next sibling elements between two given arguments.
+The following example returns all sibling elements between a `<h2>` and a `<h6>` element
+~~~js
+$("h2").nextUntil("h6");
+~~~
+
+# 56 - jQuery prev(), prevAll() & prevUntil() Methods
+The prev(), prevAll() and prevUntil() methods work just like the methods (next, nextAll, nextUntil) but with reverse functionality: they return previous sibling elements (traverse backwards along sibling elements in the DOM tree, instead of forward).
+
+# 57 - jQuery Traversing - Filtering
+* first()
+* last()
+* eq()
+* filter()
+* not()
+The most basic filtering methods are first(), last() and eq(), which allow you to select a specific element based on its position in a group of elements.     
+Other filtering methods, like filter() and not() allow you to select elements that match, or do not match, a certain criteria.     
+
+# 58 - jQuery first() Method
+The first() method returns the first element of the specified elements.        
+The following example selects the first `<div>` element
+~~~js
+$("div").first().css("background-color", "yellow");
+~~~
+
+# 59 - jQuery last() Method
+The last() method returns the last element of the specified elements.     
+
+The following example selects the last `<div>` element
+~~~js
+$("div").last().css("background-color", "yellow");
+~~~
+
+# 60 - jQuery eq() method
+The eq() method returns an element with a specific index number of the selected elements.     
+The index numbers start at 0, so the first element will have the index number 0 and not 1. The following example selects the second <p> element (index number 1):
+~~~js
+$("p").eq(1).css("background-color", "yellow");
+~~~
+
+# 61 - jQuery filter() Method
+The filter() method lets you specify a criteria. Elements that do not match the criteria are removed from the selection, and those that match will be returned.     
+The following example returns all `<p>` elements with class name "intro":
+~~~js
+    $("p").filter(".intro").css("background-color", "yellow");
+
+~~~
+
+# 62 - jQuery not() Method ( opposite of `filter` method )
+The not() method returns all elements that do not match the criteria.      
+The following example returns all `<p>` elements that do not have class name "intro":    
+~~~js
+$("p").not(".intro").css("background-color", "yellow");
+~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
