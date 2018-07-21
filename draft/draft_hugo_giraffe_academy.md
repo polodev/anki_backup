@@ -127,18 +127,72 @@ layouts/shortcodes/myshortcode.html
 # 23 - building your site
 
 hugo 
+====================================================================================================
+# menu creation in hugo
+====================================================================================================
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
+menu: "mainmenu"
+  //or
+menu:
+  mainmenu:
+    name: 'Page1'
+---
+  
+{{range .Sites.Menus.mainmenu }}
+  <a href="{{.URL}}">{{.Title}}</a>
+{{end}}
  
+// inside config.toml
+sectionPagesMenu = "mainmenu"  // for tags, categories and other taxonomies
+
+If I need a custom menu
+// inside config.toml
+[menu]
+  [[menu.mainmenu]]
+  identifier = "home"
+  name = "Home"
+  url= "/"
+  weight= 1
+ 
+  [[menu.mainmenu]]
+  identifier = "articles"
+  name = "Articles"
+  url= "/articles/"
+  weight= 2
+ 
+  [[menu.mainmenu]]
+  identifier = "recipies"
+  name = "Recipes"
+  url= "/recipes/"
+  weight= 3
+
+====================================================================================================
+# pagination in hugo
+====================================================================================================
+{{ range first 2 .Pages }}
+{{end}}
+
+// config.tom
+paginate = 2
+// list.html
+ {{range .Paginator.Pages }}
+ {{ end }}
+ {{ partial "pagination" . }}
+// partials/pagination.html
+ 
+https://codepen.io/vikrammehta/pen/VBvqWg?editors=1100
+https://codepen.io/vikrammehta/pen/YjydEM
+
+
+
+
+
+
+
+
+
+
+
+
+
