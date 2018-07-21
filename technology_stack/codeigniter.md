@@ -111,6 +111,7 @@ public function db_test
 
 # 11 - autoload model globally instead of single function 
 ~~~php
+// file: config/autoload.php
 $autoload['model'] = ['Property'] // case sensitive 
 ~~~
 
@@ -241,7 +242,7 @@ $this->output->set_content_type('jpg')->set_output($image);
 # 23 - helper for file upload
 ~~~php
 // file: controllers/Properties.php
-$this->laod->helper('form') // this is the perfect example to load header manually. since we don't need form in every where
+$this->laod->helper('form') // this is the perfect example to load manual helper. since we don't need form in every where
 // file: views/properties.php // instead of form tag
 echo form_open_multipart('')
 ~~~
@@ -264,7 +265,7 @@ public function edit()
     $image = false;
     if($_FILES)
     {
-      $image = $this->do_upload();
+      $image = $this->doupload();
     }
     if ($image) {
       $new_data['image'] = $image;

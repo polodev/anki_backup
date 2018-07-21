@@ -482,17 +482,18 @@ $("div").find("*");
 * nextUntil()
 * prev()
 * prevAll()
-* prevUntil()
+* prevUntil()      
+
 (next, nextAll, nextAll) sounds like (parent, parents, parentsUntil)     
 
 # 52 - jQuery siblings() Method
-The siblings() method returns all sibling elements of the selected element.
-The following example returns all sibling elements of `<h2>`
+The siblings() method returns all sibling elements of the selected element.    
+The following example returns all sibling elements of `<h2>`    
 ~~~js
 $("h2").siblings();
-~~~
+~~~ 
 You can also use an optional parameter to filter the search for siblings.
-The following example returns all sibling elements of `<h2>` that are `<p>` elements
+The following example returns all sibling elements of `<h2>` that are `<p>` elements       
 ~~~js
 $("h2").siblings("p");
 ~~~
@@ -527,7 +528,8 @@ The prev(), prevAll() and prevUntil() methods work just like the methods (next, 
 * last()
 * eq()
 * filter()
-* not()
+* not()      
+
 The most basic filtering methods are first(), last() and eq(), which allow you to select a specific element based on its position in a group of elements.     
 Other filtering methods, like filter() and not() allow you to select elements that match, or do not match, a certain criteria.     
 
